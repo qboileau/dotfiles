@@ -5,3 +5,11 @@
 !.bash_prompt
 !.bash_alias
 !.gitconfig
+
+#xfce terminal configuration
+!.config/
+.config/*
+!.config/xfce4/
+.config/xfce4/*
+!.config/xfce4/terminal
+!.config/xfce4/terminal/terminalrc
