@@ -13,10 +13,13 @@ alias tree='tree -h'
 alias sbl='sublime-text-2'
 
 #---------- Maven
-alias mvncis='mvn clean install -DskipTests'
-alias mvnc='mvn clean'
-alias mvni='mvn install'
-alias mvnis='mvn install -DskipTests'
-alias mvnci='mvn clean install'
-alias mvnt='mvn test'
-export MAVEN_OPTS="-Xmx1g -XX:MaxPermSize=512m"
+alias mvncis='mvn clean install -DskipTests --show-version'
+alias mvnc='mvn clean --show-version'
+alias mvni='mvn install --show-version'
+alias mvnis='mvn install -DskipTests --show-version'
+alias mvnci='mvn clean install --show-version'
+alias mvnt='mvn test --show-version'
+
+alias mvncisJDK7='export JAVA_HOME=/usr/lib/jvm/java-7-oracle && export PATH=/usr/lib/jvm/java-7-sun/bin:"${PATH}" && mvn clean install -DskipTests --show-version'
+alias mvnciJDK7='export JAVA_HOME=/usr/lib/jvm/java-7-oracle && export PATH=/usr/lib/jvm/java-7-sun/bin:"${PATH}" && mvn clean install --show-version'
+alias mvnisJDK7='export JAVA_HOME=/usr/lib/jvm/java-7-oracle && export PATH=/usr/lib/jvm/java-7-sun/bin:"${PATH}" && mvn install -DskipTests --show-version'

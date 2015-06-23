@@ -2,6 +2,9 @@ if [ -f /etc/bash_completion ]; then
 	    . /etc/bash_completion
 fi
 
+#git auto completion
+source /usr/share/git/completion/git-completion.bash
+
 xhost +local:root > /dev/null 2>&1
 
 if [ -f ~/.bash_alias ]; then
@@ -25,6 +28,11 @@ export HISTFILESIZE=${HISTSIZE}
 export HISTCONTROL=ignoreboth
 export JAVA_FONTS=/usr/share/fonts/TTF
 export EDITOR=/usr/bin/nano
+
+
+export JAVA_HOME=/usr/lib/jvm/java-7-oracle
+export M2_HOME=/opt/maven
+export MAVEN_OPTS="-Xmx1g -XX:MaxPermSize=512m"
 
 #------- Tomcat debuger
 export JPDA_ADDRESS=8000
