@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 
 alias ls='ls --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
 alias ll='ls -la --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
@@ -23,3 +24,4 @@ alias mvnt='mvn test --show-version'
 alias mvncisJDK7='export JAVA_HOME=/usr/lib/jvm/java-7-oracle && export PATH=/usr/lib/jvm/java-7-sun/bin:"${PATH}" && mvn clean install -DskipTests --show-version'
 alias mvnciJDK7='export JAVA_HOME=/usr/lib/jvm/java-7-oracle && export PATH=/usr/lib/jvm/java-7-sun/bin:"${PATH}" && mvn clean install --show-version'
 alias mvnisJDK7='export JAVA_HOME=/usr/lib/jvm/java-7-oracle && export PATH=/usr/lib/jvm/java-7-sun/bin:"${PATH}" && mvn install -DskipTests --show-version'
+

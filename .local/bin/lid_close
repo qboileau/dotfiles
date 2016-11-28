@@ -1,0 +1,4 @@
+#!/bin/bash
+#executed in root by acpid
+#echo "closed" >> /home/quentin/lid_state
+#pm-suspend && /home/quentin//local/bin/lock -p

@@ -4,6 +4,7 @@
 !.bashrc
 !.bash_prompt
 !.bash_alias
+!.bash_fun
 !.gitconfig
 
 #xfce terminal configuration
@@ -13,3 +14,37 @@
 .config/xfce4/*
 !.config/xfce4/terminal
 !.config/xfce4/terminal/terminalrc
+
+#terminator
+!.config/terminator/
+.config/terminator/*
+!.config/terminator/config
+
+#i3
+!.i3/
+.i3/*
+!.i3/config
+
+#.local scripts
+!.local/
+.local/*
+!.local/share/
+.local/share/*
+!.local/bin/
+.local/bin/*
+!.local/share/icons/
+.local/share/icons/*
+
+!.local/share/icons/lock.png
+!.local/share/icons/lockdark.png
+
+!.local/bin/dualScreenDock
+!.local/bin/dualScreenHDMI
+!.local/bin/freeswap
+!.local/bin/i3-get-window-criteria
+!.local/bin/lid_close
+!.local/bin/lid_open
+!.local/bin/lock
+!.local/bin/monoScreenLaptop
+!.local/bin/trackpad_toogle.sh
+!.local/bin/wallpaper
