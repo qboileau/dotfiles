@@ -29,14 +29,14 @@ export HISTCONTROL=ignoreboth
 export JAVA_FONTS=/usr/share/fonts/TTF
 export EDITOR=/bin/nano
 
-export JAVA_HOME=/usr/lib/jvm/java-7-oracle
-export M2_HOME=/opt/maven
+export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+export M2_HOME=/home/quentin/apps/apache-maven-3.3.9
 export MAVEN_OPTS="-Xmx1g -XX:MaxPermSize=512m"
-export SBT_OPTS="-Xms2024m -Xmx3G"
+export SBT_OPTS="-Xms512m -Xmx3G"
 
 export PATH=$HOME/apps/activator-1.3.10-minimal/bin:$PATH
 export PATH=$HOME/apps/idea-IC-162.1628.40/bin:$PATH
-export PATH=$HOME/local/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 
 
 # default prompt
