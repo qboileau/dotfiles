@@ -7,13 +7,9 @@ alias cp="cp -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
 alias np='nano PKGBUILD'
-alias fixit='sudo rm -f /var/lib/pacman/db.lck && sudo pacman-mirrors -g && sudo pacman -Syyuu  && 
-sudo pacman -Suu'
 alias tree='tree -h'
 
-alias sbl='sublime-text-2'
-
-#---------- Maven
+#Maven
 alias mvncis='mvn clean install -DskipTests --show-version'
 alias mvnc='mvn clean --show-version'
 alias mvni='mvn install --show-version'
@@ -21,7 +17,8 @@ alias mvnis='mvn install -DskipTests --show-version'
 alias mvnci='mvn clean install --show-version'
 alias mvnt='mvn test --show-version'
 
-alias mvncisJDK7='export JAVA_HOME=/usr/lib/jvm/java-7-oracle && export PATH=/usr/lib/jvm/java-7-sun/bin:"${PATH}" && mvn clean install -DskipTests --show-version'
-alias mvnciJDK7='export JAVA_HOME=/usr/lib/jvm/java-7-oracle && export PATH=/usr/lib/jvm/java-7-sun/bin:"${PATH}" && mvn clean install --show-version'
-alias mvnisJDK7='export JAVA_HOME=/usr/lib/jvm/java-7-oracle && export PATH=/usr/lib/jvm/java-7-sun/bin:"${PATH}" && mvn install -DskipTests --show-version'
-
+#Pacman
+alias fixit='sudo rm -f /var/lib/pacman/db.lck'
+alias inst='sudo pacman -S'
+alias mirrors='sudo pacman-mirrors -g'
+alias update='yaourt -Syua'

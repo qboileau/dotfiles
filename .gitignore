@@ -6,10 +6,28 @@
 !.bash_alias
 !.bash_fun
 !.gitconfig
+!.base16.Xresources
+!.solarized.Xresources
+!.tomorrow-eighties.Xresources
+!.tomorrow.Xresources
+!.Xresources
+!.extend.Xresources
+!.dir_colors
+
 
 #xfce terminal configuration
 !.config/
 .config/*
+!.config/compton.conf
+!.config/i3-scrot.conf
+!.config/mimeapps.list
+!.config/user-dirs.dirs
+!.config/user-dirs.locale
+
+!.config/autostart/
+.config/autostart/*
+!.config/autostart/dropbox.desktop
+
 !.config/xfce4/
 .config/xfce4/*
 !.config/xfce4/terminal
@@ -19,6 +37,7 @@
 !.config/terminator/
 .config/terminator/*
 !.config/terminator/config
+
 
 #i3
 !.i3/
@@ -33,11 +52,17 @@
 .local/share/*
 !.local/bin/
 .local/bin/*
+
 !.local/share/icons/
 .local/share/icons/*
-
 !.local/share/icons/lock.png
 !.local/share/icons/lockdark.png
+
+!.local/share/applications/
+.local/share/applications/*
+!.local/share/applications/mimeapps.list
+!.local/share/applications/jetbrains-idea.desktop
+
 
 !.local/bin/dualScreenDock
 !.local/bin/dualScreenHDMI

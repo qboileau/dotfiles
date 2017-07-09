@@ -24,6 +24,7 @@
   save = stash
   load = stash pop
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  ll = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 
 [core]
 	autocrlf = input
