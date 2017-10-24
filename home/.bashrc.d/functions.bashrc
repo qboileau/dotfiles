@@ -40,6 +40,9 @@ rebase () {
    git stash
  fi
 
+ echo  "#### Update current"
+ git pull --rebase
+
  echo  "#### Update develop"
  git checkout $rebaseBranch
  git pull --rebase

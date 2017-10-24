@@ -9,10 +9,6 @@ source /usr/share/git/completion/git-completion.bash
 
 xhost +local:root > /dev/null 2>&1
 
-if [ -f ~/.bash_alias ]; then
-      . ~/.bash_alias
-fi
-
 complete -cf sudo
 
 shopt -s cdspell          #fix misspelling
@@ -36,12 +32,12 @@ export BROWSER=google-chrome-stable
 
 #export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 export MAVEN_OPTS="-Xmx1g -XX:MaxPermSize=512m"
-export SBT_OPTS="-Xms512m -Xmx3G"
+export SBT_OPTS="-Xms256m -Xmx2G"
 
-#export PATH=$HOME/apps/activator-1.3.10-minimal/bin:$PATH
-#export PATH=$HOME/apps/idea-IC-162.1628.40/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 
-[[ -f ~/.bash_prompt  ]] && . ~/.bash_prompt
-[[ -f ~/.bash_fun  ]] && . ~/.bash_fun
-[[ -f ~/.bash_work  ]] && . ~/.bash_work
+# sources bash extensions
+for file in ~/.bashrc.d/*.bashrc; do
+ source "$file"
+ unset file
+done

@@ -1,0 +1,7 @@
+## Install
+
+```
+#install home files
+cd dotfiles/ 
+stow -t ~ home
+```
