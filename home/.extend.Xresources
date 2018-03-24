@@ -38,23 +38,14 @@
 !*color7:                          #E0E0E0
 !*color15:                         #E8E8E8
 
-!#if __has_include(".solarized.Xresources")
-!#include ".solarized.Xresources"
-!#endif
+!#include ".Xresources.themes/.solarized.Xresources"
+!#include ".Xresources.themes/.tomorrow-eighties.Xresources"
+!#include ".Xresources.themes/.base16.Xresources"
+!#include ".Xresources.themes/.google.dark.Xresources"
 
-#if __has_include(".tomorrow.Xresources")
-#include ".tomorrow.Xresources"
-#endif
+#include ".Xresources.themes/.tomorrow.Xresources"
 
-!#if __has_include(".tomorrow-eighties.Xresources")
-!#include ".tomorrow-eighties.Xresources"
-!#endif
-
-!#if __has_include(".base16.Xresources")
-!#include ".base16.Xresources"
-!endif
-
-Xcursor.theme: Breeze
+Xcursor.theme: Adwaita
 Xcursor.size:                     0
 
 XTerm*background:                 #272827

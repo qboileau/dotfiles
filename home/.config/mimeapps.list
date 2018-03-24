@@ -17,6 +17,7 @@ x-scheme-handler/mailto=userapp-Thunderbird.desktop
 message/rfc822=userapp-Thunderbird.desktop
 application/pdf=epdfview.desktop
 application/x-bittorrent=transmission-gtk.desktop
+image/gif=viewnior.desktop
 
 [Added Associations]
 x-scheme-handler/http=google-chrome.desktop;
@@ -33,8 +34,9 @@ application/x-extension-xht=google-chrome.desktop;
 image/jpeg=viewnior.desktop;gpicview.desktop;
 image/png=viewnior.desktop;gpicview.desktop;
 text/plain=mousepad.desktop;
-x-scheme-handler/mailto=userapp-Thunderbird.desktop;
 message/rfc822=userapp-Thunderbird.desktop;
 application/pdf=epdfview.desktop;
 application/x-bittorrent=transmission-gtk.desktop;
 inode/directory=pcmanfm.desktop;
+image/gif=viewnior.desktop;
+

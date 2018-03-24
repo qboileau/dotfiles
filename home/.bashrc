@@ -36,6 +36,8 @@ export SBT_OPTS="-Xms256m -Xmx2G"
 
 export PATH=$HOME/.local/bin:$PATH
 
+export PATH="$HOME/.cargo/bin:$PATH"
+
 # sources bash extensions
 for file in ~/.bashrc.d/*.bashrc; do
  source "$file"

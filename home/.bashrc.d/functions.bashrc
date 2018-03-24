@@ -13,7 +13,7 @@ delete_postgres () {
 }
 
 create_postgres () {
-       docker run -d --restart=always --name postgres_tabmo_test --net host -e POSTGRES_USER='tabmo' -e POSTGRES_PASSWORD='tabmo' -v /home/quentin/.sqlmanager:/docker-entrypoint-initdb.d/init-user-db.sh postgres:9.6.2
+       docker run -d --restart=always --name postgres_tabmo_test --net host -e POSTGRES_USER='tabmo' -e POSTGRES_PASSWORD='tabmo' -v /home/quentin/.sqlmanager:/docker-entrypoint-initdb.d/init-user-db.sh postgres:9.6.8
 }
 
 reload_postgres () {
@@ -67,6 +67,23 @@ rebase () {
  fi
 }
 
+clean_gone_branches() {
+   git branch -vv | grep gone | awk '{print $1}' | xargs git branch -D
+}
+
+create_worktree_from_branch() {
+  
+  test_branch=${1:-"develop"}
+  clean_test_branch=`echo $test_branch | sed -r 's/[\/]+/-/g'`
+
+  project_dir=`pwd`
+  test_dir="$project_dir-test-"
+  test_dir+=$clean_test_branch
+
+  mkdir $test_dir
+  echo "Create worktree for branch $test_branch on directory $test_dir"
+  git worktree add --detach $test_dir $test_branch
+}
 
 test_in_worktree() {
 
