@@ -1,6 +1,6 @@
 [user]
-  name = Quentin Boileau
-  username = qboileau
+	name = qboileau
+        username = Quentin Boileau
 	
 [color]
   status = always
@@ -28,9 +28,7 @@
 
 [core]
 	autocrlf = input
-
-[diff]
-	external = meld
+	pager = diff-so-fancy | less --tabs=4 -RFX
 
 [push]
   default = simple
@@ -41,6 +39,5 @@
 [credential]
 	helper = cache --timeout=3600
 
-[credential "https://github.com"]
-  username = qboileau
-
+[include]
+    path = .git_credentials
