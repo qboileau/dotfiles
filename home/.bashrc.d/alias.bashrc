@@ -8,6 +8,8 @@ alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
 alias np='nano PKGBUILD'
 alias tree='tree -h'
+alias ip='ip --color'
+alias ipb='ip --color --brief'
 
 alias updateBash='source ~/.bashrc'
 alias updateXresources='xrdb ~/.Xresources'
