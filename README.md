@@ -36,3 +36,6 @@ gpasswd -a $USER docker
 `pacman -S glances`
 
 
+### Others
+`pacman -S feh`
+`parcman -S bash-completion`
