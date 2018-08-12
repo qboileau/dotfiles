@@ -38,4 +38,4 @@ gpasswd -a $USER docker
 
 ### Others
 `pacman -S feh`
-`parcman -S bash-completion`
+`pacman -S bash-completion`

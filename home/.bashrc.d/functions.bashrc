@@ -157,3 +157,10 @@ colors() {
     echo; echo
   done
 }
+
+
+meteo()
+{
+    # change Paris to your default location
+    curl -H "Accept-Language: fr" wttr.in/"${1:-Montpellier}?n2"
+}
