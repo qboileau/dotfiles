@@ -38,4 +38,8 @@ gpasswd -a $USER docker
 
 ### Others
 `pacman -S feh`
+`pacman -S galculator`
 `pacman -S bash-completion`
+`pacman -S xorg-xbacklight`
+`pacman -S noto-fonts-emoji`
+`yaourt ttf-emojione-color`
