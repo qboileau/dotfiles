@@ -35,7 +35,6 @@ gpasswd -a $USER docker
 #### Glances
 `pacman -S glances`
 
-
 ### Others
 `pacman -S feh`
 `pacman -S galculator`
@@ -43,3 +42,4 @@ gpasswd -a $USER docker
 `pacman -S xorg-xbacklight`
 `pacman -S noto-fonts-emoji`
 `yaourt ttf-emojione-color`
+`yaourt nerd-fonts-complete`

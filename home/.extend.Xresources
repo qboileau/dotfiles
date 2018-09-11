@@ -45,7 +45,7 @@
 
 #include ".Xresources.themes/.tomorrow.Xresources"
 
-Xcursor.theme: xcursor-breeze
+Xcursor.theme: Adwaita
 Xcursor.size:                     0
 
 XTerm*background:                 #272827

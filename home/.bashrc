@@ -34,11 +34,10 @@ export BROWSER=google-chrome-stable
 export MAVEN_OPTS="-Xmx1g -XX:MaxPermSize=512m"
 export SBT_OPTS="-Xms256m -Xmx2G"
 
-export PATH="$HOME/.local/bin":$PATH
+export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="$HOME/.gem/ruby/2.5.0/bin:$PATH"
 
-#sources bash extensions
+# sources bash extensions
 for file in ~/.bashrc.d/*.bashrc; do
  source "$file"
  unset file
