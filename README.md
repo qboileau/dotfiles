@@ -9,7 +9,7 @@ stow -R -t ~ home
 ## Dependencies and utilities 
 
 #### Rofi
-`pacman -S rofi rofy-scripts`
+`pacman -S rofi rofi-scripts`
 
 #### I3Blocks
 `pacman -S i3blocks`
