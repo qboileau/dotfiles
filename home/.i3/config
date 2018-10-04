@@ -59,9 +59,9 @@ set $screenHDMI $HOME/.local/bin/dualScreenHDMI
 set $screenLaptop $HOME/.local/bin/monoScreenLaptop
 set $monitor Dock(d), HDMI(h), Laptop(l)
 mode "$monitor" {
-  bindsym d exec --no-startup-id $screenDock, mode "default"
-  bindsym h exec --no-startup-id $screenHDMI, mode "default"
-  bindsym l exec --no-startup-id $screenLaptop, mode "default"
+  bindsym d exec "xrandr --output DP2-2 --auto --right-of eDP1", mode "default"
+  bindsym h exec "xrandr --output HDMI-1 --auto --right-of LVDS-1", mode "default"
+  bindsym l exec "xrandr --output LVDS-1 --auto --output HDMI-1  --off", mode "default"
 
   # back to normal: Enter or Escape
   bindsym Return mode "default"
@@ -78,13 +78,18 @@ mode "$monitor" {
 #bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound F1
 #bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume F2
 #bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume F3
-bindsym XF86AudioMicMute exec --no-startup-id amixer set Capture toggle # mute mic F4
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness with xbacklight F5
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness with xbacklight F6
-bindsym XF86Display mode "$monitor"
+#bindsym XF86AudioMicMute exec --no-startup-id amixer set Capture toggle # mute mic F4
+#bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness with xbacklight F5
+#bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness with xbacklight F6
+#bindsym XF86Display mode "$monitor"
 #bindsym XF86Tools #F9
 #bindsym XF86Search #F10
-bindsym XF86LaunchA exec galculator #F11
+#bindsym XF86LaunchA exec galculator #F11
+#bindsym XF86Explorer exec pcmanfm #F12 file manager
+
+
+# Monitor selection
+bindsym $mod+F6 mode "$monitor"
 
 # Spotify controls
 bindsym $mod+XF86AudioLowerVolume exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
@@ -97,8 +102,8 @@ bindsym $mod+XF86AudioMicMute exec dbus-send --print-reply --dest=org.mpris.Medi
 bindsym $mod+F2 exec google-chrome-stable
 
 #Filemanager GUI
-bindsym XF86Explorer exec pcmanfm #F12 file manager
-bindsym $mod+Shift+XF86Explorer exec gksu pcmanfm
+bindsym $mod+F12 exec pcmanfm #F12 file manager
+bindsym $mod+Shift+F12 exec gksu pcmanfm
 # bindsym $mod+F3 exec ranger
 
 #music
@@ -344,6 +349,7 @@ exec_always --no-startup-id fix_xcursor
 exec --no-startup-id dropbox start
 #exec --no-startup-id spotify
 exec --no-startup-id sbxkb
+exec --no-startup-id volumeicon
 
 
 # Move the current workspace to the next output
@@ -362,6 +368,7 @@ bar {
 ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
 #	tray_output primary
 #	tray_output eDP1
+    tray_output LVDS-1
 
 	bindsym button4 nop
 	bindsym button5 nop
