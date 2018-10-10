@@ -22,10 +22,10 @@ reload_postgres () {
        create_postgres;
 }
 
-# rebase current branch to another (default develop)
+# rebase current branch to another (default master)
 rebase () {
 
- rebaseBranch=${1:-"develop"}
+ rebaseBranch=${1:-"master"}
  currentBranch=`git symbolic-ref --short -q HEAD`
  if [ `git status --porcelain 2>/dev/null| egrep "^(M| M)" | wc -l` -ne 0 ]; then
    dirty=true
@@ -43,7 +43,7 @@ rebase () {
  echo  "#### Update current"
  git pull --rebase
 
- echo  "#### Update develop"
+ echo  "#### Update master"
  git checkout $rebaseBranch
  git pull --rebase
 
@@ -162,5 +162,5 @@ colors() {
 meteo()
 {
     # change Paris to your default location
-    curl -H "Accept-Language: fr" wttr.in/"${1:-Montpellier}?n2"
+    curl -H "Accept-Language: fr" wttr.in/"${1:-Montpellier}?n3"
 }
