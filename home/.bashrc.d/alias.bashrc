@@ -1,15 +1,16 @@
 #!/usr/bin/env bash
 
-alias ls='ls --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
-alias ll='ls -lah --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
-alias grep='grep --color=tty -d skip'
+alias ls='exa --group-directories-first --time-style=long-iso --git --color=auto -F'
+alias ll='exa -lah --group-directories-first --time-style=long-iso --git --color=auto -F'
+alias tree='exa -lah --group-directories-first --time-style=long-iso --git --color=auto --tree -F'
+alias grep='rg'
 alias cp="cp -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
 alias np='nano PKGBUILD'
-alias tree='tree -h'
 alias ip='ip --color'
 alias ipb='ip --color --brief'
+alias cat='bat'
 
 alias updateBash='source ~/.bashrc'
 alias updateXresources='xrdb ~/.Xresources'
@@ -27,3 +28,6 @@ alias fixit='sudo rm -f /var/lib/pacman/db.lck'
 alias inst='sudo pacman -S'
 alias mirrors='sudo pacman-mirrors -g'
 alias update='yaourt -Syua'
+
+alias azerty='setxkbmap -model pc105 -layout fr -variant azerty'
+alias qwerty='setxkbmap -model pc105 -layout us -variant alt-intl'

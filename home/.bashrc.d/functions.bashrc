@@ -158,9 +158,39 @@ colors() {
   done
 }
 
-
 meteo()
 {
     # change Paris to your default location
     curl -H "Accept-Language: fr" wttr.in/"${1:-Montpellier}?n2"
+}
+
+docker_ip() {
+  oldISF=$ISF
+  IFS=$'\n'
+  containers=`docker ps --format "{{.ID}} {{.Image}}"` 
+  
+  for item in $containers
+  do 
+    id=`echo $item | cut -d ' ' -f1`
+    image=`echo $item | cut -d ' ' -f2`
+    ip=`docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $id`
+    echo $image"("$id") : "$ip
+  done
+  IFS=$oldISF
+}
+
+docker_dns() {
+  docker run -d \
+  --hostname dns.mageddo \
+  --restart=unless-stopped \
+  -p 5380:5380 \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v /etc/resolv.conf:/etc/resolv.conf \
+  -e MG_REGISTER_CONTAINER_NAMES=1 \
+  defreitas/dns-proxy-server
+}
+
+pulseaudio_restart() {
+  pulseaudio --kill
+  pulseaudio --start
 }

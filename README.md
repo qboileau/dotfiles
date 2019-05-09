@@ -24,22 +24,21 @@ gpasswd -a $USER docker
 ```
 
 #### Veracrypt
-`pacman -S veracrypt`
+- `pacman -S veracrypt`
 
 #### Dropbox
-`yaourt dropbox`
+- `yaourt dropbox`
 
-#### Git
-`pacman -S git diff-so-fancy`
+#### Git  
+- `pacman -S git diff-so-fancy`
+- `yaourt -S git-standup-git` //git standup
+- `yaourt -S git-interactive-rebase-tool`
 
 #### Glances
-`pacman -S glances`
+- `pacman -S glances`
 
 ### Others
-`pacman -S feh`
-`pacman -S galculator`
-`pacman -S bash-completion`
-`pacman -S xorg-xbacklight`
-`pacman -S noto-fonts-emoji`
-`yaourt ttf-emojione-color`
-`yaourt nerd-fonts-complete`
+- `pacman -S feh galculator bash-completion noto-fonts-emoji bat exa ripgrep xorg-xbacklight`
+- `yaourt ttf-emojione-color` //fonts 
+- `yaourt nerd-fonts-complete` //fonts 
+- `yaourt -S siji-git` //glyphs fonts
