@@ -43,16 +43,21 @@ module-margin-left = 1
 module-margin-right = 2
 
 ;font-0 = "NotoEmoji:style=Regular:size=2:pixelsize=8:dpi=75:scale=1;0"
-font-0 = "Font Awesome 5 Free:style=Regular;0"
-font-1 = "NotoSans:style=Regular:size=8;2"
-font-2 = siji:pixelsize=10;1
-;font-2 = ""Material Design Icons:size=10;0"
+;font-0 = "Font Awesome 5 Free:style=Regular;0"
+;font-1 = "NotoSans:style=Regular:size=8;2"
+;font-2 = siji:pixelsize=10;1
+;font-3 = ""Material Design Icons:size=10;0"
 ;font-3 = "Termsynu:size=8;-1"
 ;font-4 = "Noto Emoji":style=Regular;0
-
 ;font-0 = fixed:pixelsize=10;1
 ;font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 ;font-2 = siji:pixelsize=10;1
+
+
+font-0 = Noto Sans:size=10:antialias=true;0				# Main
+font-1 = Noto Sans Symbols:size=10:antialias=true;0		# Emoji + support
+font-2 = Wuncon Siji:antialias=false:pixelsize=8;1		# Symbols (CPU, RAM, etc.)
+font-3 = Noto Sans CJK JP:size=10:antialias=true;0		# (Japanese) Band names, etc.
 
 modules-left = i3
 modules-center = 
@@ -64,15 +69,10 @@ tray-padding = 2
 ;tray-transparent = true
 ;tray-background = #0063ff
 
-;wm-restack = bspwm
-
 ;i3 settinges
 wm-restack = i3
-;override-redirect = true
+override-redirect = false
 ;bottom = true
-
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
 
 ;scroll-up = i3wm-wsnext
 ;scroll-down = i3wm-wsprev
@@ -110,25 +110,6 @@ label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
-[module/bspwm]
-type = internal/bspwm
-
-label-focused = %index%
-label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
-label-focused-padding = 2
-
-label-occupied = %index%
-label-occupied-padding = 2
-
-label-urgent = %index%!
-label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
-
-label-empty = %index%
-label-empty-foreground = ${colors.foreground-alt}
-label-empty-padding = 2
-
 [module/i3]
 type = internal/i3
 format = <label-state> <label-mode>
@@ -144,13 +125,13 @@ label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
 label-focused = %index%
-label-focused-background = ${module/bspwm.label-focused-background}
-label-focused-underline = ${module/bspwm.label-focused-underline}
-label-focused-padding = ${module/bspwm.label-focused-padding}
+label-focused-background = ${colors.background-alt}
+label-focused-underline= ${colors.primary}
+label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %index%
-label-unfocused-padding = ${module/bspwm.label-occupied-padding}
+label-unfocused-padding = 2
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %index%
@@ -160,18 +141,19 @@ label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
 label-urgent = %index%
-label-urgent-background = ${module/bspwm.label-urgent-background}
-label-urgent-padding = ${module/bspwm.label-urgent-padding}
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
 
 [module/mpd]
 type = internal/mpd
 format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
 
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
+icon-prev = ⏮
+icon-stop = ⏹
+icon-play = ▶
+icon-pause = ll
+icon-next = ⏭
+icon-random = 🔀
 
 label-song-maxlen = 25
 label-song-ellipsis = true
@@ -216,7 +198,7 @@ label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
-interface = wlp4s0
+interface = wlp3s0
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
@@ -256,11 +238,11 @@ format-disconnected =
 type = internal/date
 interval = 5
 
-date =
-date-alt = " %Y-%m-%d"
+date = " %d-%m-%Y"
+;date-alt = " %d-%m-%Y"
 
 time = %H:%M
-time-alt = %H:%M:%S
+;time-alt = %H:%M:%S
 
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
