@@ -180,6 +180,8 @@ docker_ip() {
 }
 
 docker_dns() {
+  docker kill `docker ps -q --filter ancestor=defreitas/dns-proxy-server` &>/dev/null && echo 'Removed old container'
+
   docker run -d \
   --hostname dns.mageddo \
   --restart=unless-stopped \
