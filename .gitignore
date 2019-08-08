@@ -4,3 +4,13 @@
 out
 gen
 /venv/
+
+# Custom ignore
+home/.bashrc.d/work.bashrc
+home/.sbt/*/plugins/project
+home/.sbt/*/plugins/target
+home/.sbt/*/server
+home/.sbt/*/staging
+home/.sbt/*/zinc
+home/.sbt/boot
+home/.sbt/preloaded
