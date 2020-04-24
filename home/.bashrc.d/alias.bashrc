@@ -12,6 +12,7 @@ alias ip='ip --color'
 alias ipb='ip --color --brief'
 alias cat='bat'
 
+alias source_bash='source ~/.bashrc'
 alias updateBash='source ~/.bashrc'
 alias updateXresources='xrdb ~/.Xresources'
 
