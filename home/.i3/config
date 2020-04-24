@@ -36,6 +36,7 @@ bindsym $mod+Ctrl+q --release exec --no-startup-id xkill
 bindsym $alt+Tab exec "rofi -show window"
 bindsym $mod+d exec "rofi -show run"
 bindsym $mod+Shift+s exec --no-startup-id rofi -show ssh
+bindsym $mod+Shift+semicolon exec --no-startup-id rofi -show emoji -modi emoji
 
 # launch categorized menu
 bindsym $mod+z exec --no-startup-id morc_menu
@@ -45,11 +46,11 @@ bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
 ################################################################################################
 
-exec --no-startup-id volumeicon
-bindsym $mod+Shift+m exec terminal -e 'alsamixer'
-#exec --no-startup-id pulseaudio
-#exec --no-startup-id pa-applet
-#bindsym $mod+Shift+m exec pavucontrol
+#exec --no-startup-id volumeicon
+#bindsym $mod+Shift+m exec terminal -e 'alsamixer'
+exec --no-startup-id pulseaudio
+exec --no-startup-id pa-applet
+bindsym $mod+Shift+m exec pavucontrol
 
 ################################################################################################
 
@@ -92,10 +93,10 @@ bindsym $mod+XF86AudioRaiseVolume exec dbus-send --print-reply --dest=org.mpris.
 bindsym $mod+XF86AudioMute exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
 bindsym $mod+XF86AudioMicMute exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop
 
-bindsym $mod+F9 exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
-bindsym $mod+F10 exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
-bindsym $mod+F11 exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
-bindsym $mod+F12 exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop
+bindsym $mod+F9  exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous ; dbus-send --print-reply  --dest=org.mpris.MediaPlayer2.spotifyd /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
+bindsym $mod+F10 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next ; dbus-send --print-reply  --dest=org.mpris.MediaPlayer2.spotifyd /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
+bindsym $mod+F11 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause ; dbus-send --print-reply  --dest=org.mpris.MediaPlayer2.spotifyd /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+bindsym $mod+F12 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop ; dbus-send --print-reply  --dest=org.mpris.MediaPlayer2.spotifyd /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop"
 
 
 # Start Applications
@@ -258,6 +259,7 @@ for_window [class="Calamares"] floating enable border normal
 for_window [class="Clipgrab"] floating enable
 for_window [title="File Transfer*"] floating enable
 for_window [class="Galculator"] floating enable border pixel 1
+for_window [class="Clac"] floating enable border pixel 1
 for_window [class="GParted"] floating enable border normal
 for_window [title="i3_help"] floating enable sticky enable border normal
 for_window [class="Lightdm-gtk-greeter-settings"] floating enable
@@ -357,11 +359,17 @@ bindsym $mod+x move workspace to output right
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
-	i3bar_command i3bar
+   font pango:DejaVu Sans Mono, FontAwesome 10
+   
+   status_command /usr/bin/i3status-rs ~/.i3/i3status-rust 
+
+	#i3bar_command i3bar --transparency
 	#status_command i3status
 
 	#status_command i3status --config ~/.i3/i3status.conf
-    	status_command i3blocks -c ~/.i3/i3blocks.conf
+   #status_command i3blocks -c ~/.i3/i3blocks.conf
+   
+   #status_command /home/qboileau/projects/others/test/i3status-rust/target/release/i3status-rs /home/qboileau/projects/others/test/i3status-rust/example_config.toml
 	position bottom
 
 ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
@@ -370,20 +378,16 @@ bar {
 
 	bindsym button4 nop
 	bindsym button5 nop
-	font xft:Noto Sans 10.5
 	strip_workspace_numbers no
 
 	colors {
-#       background $transparent
-        background #2B2C2B
-        statusline #F9FAF9
-        separator  #454947
-
-#                          border  backgr. text
-        focused_workspace  #F9FAF9 #16A085 #2B2C2B
-        active_workspace   #595B5B #353836 #FDF6E3
-        inactive_workspace #595B5B #353836 #EEE8D5
-        urgent_workspace   #16A085 #FDF6E3 #E5201D
+        separator #666666
+        background #222222
+        statusline #dddddd
+        focused_workspace #268bd2 #268bd2 #002b36
+        active_workspace #333333 #333333 #ffffff
+        inactive_workspace #333333 #333333 #888888
+        urgent_workspace #dc322f #dc322f #002b36
     }
 }
 

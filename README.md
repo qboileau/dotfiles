@@ -11,8 +11,9 @@ stow -R -t ~ home
 #### Rofi
 `pacman -S rofi rofi-scripts`
 
-#### I3Blocks
+#### I3Blocks / i3status-rust
 `pacman -S i3blocks`
+`yaourt -S i3status-rust`
 
 #### Docker 
 ```
