@@ -43,7 +43,7 @@ rebase () {
  echo  "#### Update current"
  git pull --rebase
 
- echo  "#### Update develop"
+ echo  "#### Update ${rebaseBranch}"
  git checkout $rebaseBranch
  git pull --rebase
 
@@ -167,14 +167,16 @@ meteo()
 docker_ip() {
   oldISF=$ISF
   IFS=$'\n'
-  containers=`docker ps --format "{{.ID}} {{.Image}}"` 
+  containers=`docker ps --format "{{.ID}} {{.Names}} {{.Image}}"` 
   
+  echo "ID / NAME (IMAGE) : IP"
   for item in $containers
   do 
     id=`echo $item | cut -d ' ' -f1`
-    image=`echo $item | cut -d ' ' -f2`
+    name=`echo $item | cut -d ' ' -f2`
+    image=`echo $item | cut -d ' ' -f3`
     ip=`docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $id`
-    echo $image"("$id") : "$ip
+    echo $id" / "$name" ("$image") : "$ip
   done
   IFS=$oldISF
 }
