@@ -17,7 +17,7 @@ i3_config_file="$HOME/.i3/config.test"
 i3_fragments_dir="$HOME/.i3/config.d/"
 i3_includes_file="$HOME/.i3/config.d/i3_configs.conf"
 
-include_file() {²
+include_file() {
   file="$1"
   #echo "include file $file"
   cat "$file" >> "$i3_config_file"
