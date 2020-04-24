@@ -1,7 +1,7 @@
 #!/bin/bash
 
 COUNTERNAME='/tmp/background_counter'
-BG_FOLDER=~/Dropbox/wallpapers/
+BG_FOLDER=~/Dropbox/wallpapers/1x1/
 
 resetCounter()
 {
