@@ -49,10 +49,11 @@ def outputs_off(monitors):
 
 def generate_monitor_config(outputs):
 
+
     try:
-        primary = next(filter(lambda o: o.isPrimary, outputs))
+        primary = next(iter(filter(lambda o: o.isPrimary, outputs)))
     except StopIteration:
-        primary = next(outputs)
+        primary = next(iter(outputs))
 
     config = ''
     config += 'bindsym $mod+F6 mode $monitor_mode\n'
@@ -171,6 +172,8 @@ s = d.screen()
 window = s.root.create_window(0, 0, 1, 1, 1, s.root_depth)
 
 outputs = get_outputs(window, d)
+#for output in outputs: 
+#    print(output.to_string())
 
 #generate and print config
 config = generate_monitor_config(outputs)
@@ -178,18 +181,18 @@ print(config)
 
 #
 #
-# print("Primary output:")
-# pp.pprint(window.xrandr_get_output_primary()._data)
+#print("Primary output:")
+#pp.pprint(window.xrandr_get_output_primary()._data)
 #
-# resources = window.xrandr_get_screen_resources()._data
-# print("Modes:")
+#resources = window.xrandr_get_screen_resources()._data
+#print("Modes:")
 #
-# for mode in resources['modes']:
-#     # print("Mode %d info:" % (mode, ))
-#     pp.pprint(mode._data)
+#for mode in resources['modes']:
+#    #print("Mode %d info:" % (mode, ))
+#    pp.pprint(mode._data)
 #
-# for mode_id, mode in parseModes(resources['mode_names'], resources['modes']).items():
-#     print("    %d: %s" % (mode_id, mode['name']))
+#for mode_id, mode in parseModes(resources['mode_names'], resources['modes']).items():
+#    print("    %d: %s" % (mode_id, mode['name']))
 #
 # for output in resources['outputs']:
 #     print("Output %d info:" % (output, ))

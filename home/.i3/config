@@ -48,9 +48,9 @@ bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 
 #exec --no-startup-id volumeicon
 #bindsym $mod+Shift+m exec terminal -e 'alsamixer'
-exec --no-startup-id pulseaudio
+exec --no-startup-id pulseaudio --start
 exec --no-startup-id pa-applet
-bindsym $mod+Shift+m exec pavucontrol
+bindsym $mod+Shift+m exec pavucontrol-qt
 
 ################################################################################################
 
@@ -70,15 +70,15 @@ mode "$monitor" {
 }
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+#bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
+#bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
 # CUSTOM Lenovo T460 bindings
 # Pulse Audio controls
 #No used because replaced by alsamixer and volumeicon binding
-#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound F1
-#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume F2
-#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume F3
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound F1
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume F2
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume F3
 bindsym XF86AudioMicMute exec --no-startup-id amixer set Capture toggle # mute mic F4
 #bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness with xbacklight F5
 #bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness with xbacklight F6
@@ -285,6 +285,7 @@ for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
 for_window [class="Gitk"] floating enable
 for_window [class="Arandr"] floating enable
+for_window [class="Microsoft Teams Notification"] floating enable
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -380,7 +381,7 @@ bar {
 	bindsym button5 nop
 	strip_workspace_numbers no
 
-	colors {
+    colors {
         separator #666666
         background #222222
         statusline #dddddd
@@ -460,63 +461,57 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
+
 bindsym $mod+F6 mode $monitor_mode
-set $eDP1 eDP1 [a]lone, [o]ff
-mode "$eDP1" {
-   bindsym a exec "xrandr --output eDP1 --primary --auto  --output DP3 --off", mode "default"
-   bindsym o exec "xrandr --output eDP1 --off", mode "default"
+set $eDP eDP [a]lone, [o]ff, [p]rimary, Left[←] of eDP, Right[→] of eDP
+mode "$eDP" {
+   bindsym a exec "xrandr --output eDP --primary --auto  --output HDMI-A-0 --off", mode "default"
+   bindsym o exec "xrandr --output eDP --off", mode "default"
+   bindsym p exec "xrandr --output eDP --primary", mode "default"
+   bindsym Left exec "xrandr --output eDP --auto --left-of eDP", mode "default"
+   bindsym Right exec "xrandr --output eDP --auto --right-of eDP", mode "default"
    bindsym Return mode "default"
    bindsym Escape mode "default"
 }
 
-set $VIRTUAL1 VIRTUAL1 [a]lone, [p]rimary, Left[←] of eDP1, Right[→] of eDP1
-mode "$VIRTUAL1" {
-   bindsym a exec "xrandr --output VIRTUAL1 --primary --auto  --output DP3 --off --output eDP1 --off", mode "default"
-   bindsym p exec "xrandr --output VIRTUAL1 --primary", mode "default"
-   bindsym Left exec "xrandr --output VIRTUAL1 --auto --left-of eDP1", mode "default"
-   bindsym Right exec "xrandr --output VIRTUAL1 --auto --right-of eDP1", mode "default"
+set $HDMI_A_0 HDMI-A-0 [a]lone, [o]ff, [p]rimary, Left[←] of eDP, Right[→] of eDP
+mode "$HDMI_A_0" {
+   bindsym a exec "xrandr --output HDMI-A-0 --primary --auto  --output eDP --off", mode "default"
+   bindsym o exec "xrandr --output HDMI-A-0 --off", mode "default"
+   bindsym p exec "xrandr --output HDMI-A-0 --primary", mode "default"
+   bindsym Left exec "xrandr --output HDMI-A-0 --auto --left-of eDP", mode "default"
+   bindsym Right exec "xrandr --output HDMI-A-0 --auto --right-of eDP", mode "default"
    bindsym Return mode "default"
    bindsym Escape mode "default"
 }
 
-set $DP3 DP3 [a]lone, [o]ff, [p]rimary, Left[←] of eDP1, Right[→] of eDP1
-mode "$DP3" {
-   bindsym a exec "xrandr --output DP3 --primary --auto  --output eDP1 --off", mode "default"
-   bindsym o exec "xrandr --output DP3 --off", mode "default"
-   bindsym p exec "xrandr --output DP3 --primary", mode "default"
-   bindsym Left exec "xrandr --output DP3 --auto --left-of eDP1", mode "default"
-   bindsym Right exec "xrandr --output DP3 --auto --right-of eDP1", mode "default"
+set $DisplayPort_1 DisplayPort-1 [a]lone, [p]rimary, Left[←] of eDP, Right[→] of eDP
+mode "$DisplayPort_1" {
+   bindsym a exec "xrandr --output DisplayPort-1 --primary --auto  --output HDMI-A-0 --off --output eDP --off", mode "default"
+   bindsym p exec "xrandr --output DisplayPort-1 --primary", mode "default"
+   bindsym Left exec "xrandr --output DisplayPort-1 --auto --left-of eDP", mode "default"
+   bindsym Right exec "xrandr --output DisplayPort-1 --auto --right-of eDP", mode "default"
    bindsym Return mode "default"
    bindsym Escape mode "default"
 }
 
-set $DP2 DP2 [a]lone, [p]rimary, Left[←] of eDP1, Right[→] of eDP1
-mode "$DP2" {
-   bindsym a exec "xrandr --output DP2 --primary --auto  --output DP3 --off --output eDP1 --off", mode "default"
-   bindsym p exec "xrandr --output DP2 --primary", mode "default"
-   bindsym Left exec "xrandr --output DP2 --auto --left-of eDP1", mode "default"
-   bindsym Right exec "xrandr --output DP2 --auto --right-of eDP1", mode "default"
+set $DisplayPort_0 DisplayPort-0 [a]lone, [p]rimary, Left[←] of eDP, Right[→] of eDP
+mode "$DisplayPort_0" {
+   bindsym a exec "xrandr --output DisplayPort-0 --primary --auto  --output HDMI-A-0 --off --output eDP --off", mode "default"
+   bindsym p exec "xrandr --output DisplayPort-0 --primary", mode "default"
+   bindsym Left exec "xrandr --output DisplayPort-0 --auto --left-of eDP", mode "default"
+   bindsym Right exec "xrandr --output DisplayPort-0 --auto --right-of eDP", mode "default"
    bindsym Return mode "default"
    bindsym Escape mode "default"
 }
 
-set $DP1 DP1 [a]lone, [p]rimary, Left[←] of eDP1, Right[→] of eDP1
-mode "$DP1" {
-   bindsym a exec "xrandr --output DP1 --primary --auto  --output DP3 --off --output eDP1 --off", mode "default"
-   bindsym p exec "xrandr --output DP1 --primary", mode "default"
-   bindsym Left exec "xrandr --output DP1 --auto --left-of eDP1", mode "default"
-   bindsym Right exec "xrandr --output DP1 --auto --right-of eDP1", mode "default"
-   bindsym Return mode "default"
-   bindsym Escape mode "default"
-}
-
-set $monitor_mode eDP1*(1) VIRTUAL1(2) DP3(3) DP2(4) DP1(5)
+set $monitor_mode eDP(1) HDMI-A-0(2) DisplayPort-1(3) DisplayPort-0(4)
 mode "$monitor_mode" {
-    bindsym 1 mode "$eDP1"
-    bindsym 2 mode "$VIRTUAL1"
-    bindsym 3 mode "$DP3"
-    bindsym 4 mode "$DP2"
-    bindsym 5 mode "$DP1"
+    bindsym 1 mode "$eDP"
+    bindsym 2 mode "$HDMI_A_0"
+    bindsym 3 mode "$DisplayPort_1"
+    bindsym 4 mode "$DisplayPort_0"
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
+
