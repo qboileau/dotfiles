@@ -46,11 +46,15 @@ bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
 ################################################################################################
 
+# ALSA
 #exec --no-startup-id volumeicon
 #bindsym $mod+Shift+m exec terminal -e 'alsamixer'
-exec --no-startup-id pulseaudio --start
-exec --no-startup-id pa-applet
-bindsym $mod+Shift+m exec pavucontrol-qt
+
+# Pulseaudio
+#exec --no-startup-id pulseaudio --start
+#exec --no-startup-id pa-applet
+exec --no-startup-id pasystray
+bindsym $mod+Shift+m exec pavucontrol
 
 ################################################################################################
 

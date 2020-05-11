@@ -14,3 +14,5 @@ home/.sbt/*/staging
 home/.sbt/*/zinc
 home/.sbt/boot
 home/.sbt/preloaded
+
+home/.config/systemd/user/default.target.wants

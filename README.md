@@ -4,6 +4,10 @@
 #install home files
 cd dotfiles/ 
 stow -R -t ~ home
+
+# enable ssh-agent autostart
+systemctl --user enable ssh-agent.service
+systemctl --user start ssh-agent.service
 ```
 
 ## Dependencies and utilities 
