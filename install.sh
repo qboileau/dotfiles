@@ -28,6 +28,9 @@ pacman -Syu
 "Install packages"
 pacman -S --needed - < sed -e '/^\s*#.*$/d' -e '/^\s*$/d' packages.list
 
+"Install AUR packages"
+yay -S --needed - < sed -e '/^\s*#.*$/d' -e '/^\s*$/d' packages_aur.list
+
 echo "Install all dotfiles in $SUDO_USER home"
 install -dbv -o $SUDO_USER -g $SUDO_USER ./home $home_dir
 
