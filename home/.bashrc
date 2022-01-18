@@ -23,6 +23,9 @@ shopt -s hostcomplete     #
 # better yaourt colors
 export YAOURT_COLORS="nb=1:pkg=1:ver=1;32:lver=1;45:installed=1;42:grp=1;34:od=1;41;5:votes=1;44:dsc=0:other=1;35"
 
+export TERMINAL=alacritty
+export TERM=alacritty
+
 export HISTSIZE=10000
 export HISTFILESIZE=${HISTSIZE}
 export HISTCONTROL=ignoreboth
@@ -30,13 +33,18 @@ export JAVA_FONTS=/usr/share/fonts/TTF
 export EDITOR=/bin/nano
 export BROWSER=google-chrome-stable
 
-#export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+export JAVA_HOME=/usr/lib/jvm/default
 export MAVEN_OPTS="-Xmx1g -XX:MaxPermSize=512m"
 export SBT_OPTS="-Xms256m -Xmx2G"
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/go/bin/:$PATH"
+export PATH="$HOME/bin/:$PATH"
+#Android build tools
+export PATH="~/projects/perso/Andoid_build/tools/plateform-tools:$PATH"
+
+export KUBECONFIG="/home/qboileau/.kube/config-th3:/home/qboileau/.kube/config-minikube"
 
 # sources bash extensions
 for file in ~/.bashrc.d/*.bashrc; do
@@ -46,3 +54,10 @@ done
 
 # added by travis gem
 [ -f /home/qboileau/.travis/travis.sh ] && source /home/qboileau/.travis/travis.sh
+
+# source nvm if exist
+[ -f /usr/share/nvm/init-nvm.sh ] && source /usr/share/nvm/init-nvm.sh
+
+# super prompt
+eval "$(starship init bash)"
+

@@ -1,5 +1,6 @@
 set nocompatible
 set number
+set mouse=a
 
 " Initialisation de pathogen
 call pathogen#infect()

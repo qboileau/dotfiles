@@ -1,0 +1,8 @@
+#!/bin/bash 
+
+if pgrep -x "gsimplecal" >/dev/null
+then
+    killall /usr/bin/gsimplecal
+else
+    /usr/bin/gsimplecal &
+fi

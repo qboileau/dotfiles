@@ -1,7 +1,12 @@
 #!/bin/bash
 
-COUNTERNAME='/tmp/background_counter'
+COUNTERNAME='ca'
 BG_FOLDER=~/Dropbox/wallpapers/1x1/
+
+#fallback to default backgrounds
+if [ ! -d "$BG_FOLDER" ]; then 
+    BG_FOLDER=/usr/share/backgrounds/
+fi
 
 resetCounter()
 {
@@ -40,7 +45,8 @@ showSelectedImage()
 
 showRandomImage()
 {
-    feh --randomize  --bg-scale $BG_FOLDER/*
+    BG_FILENAME=$(find $BG_FOLDER -type f | shuf -n 1)
+    feh --randomize  --bg-scale $BG_FILENAME
 }
 
 case $1 in
