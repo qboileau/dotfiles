@@ -77,8 +77,7 @@ create_worktree_from_branch() {
   clean_test_branch=`echo $test_branch | sed -r 's/[\/]+/-/g'`
 
   project_dir=`pwd`
-  test_dir="$project_dir-test-"
-  test_dir+=$clean_test_branch
+  test_dir="$project_dir-test-$clean_test_branch"
 
   mkdir $test_dir
   echo "Create worktree for branch $test_branch on directory $test_dir"
@@ -160,7 +159,6 @@ colors() {
 
 meteo()
 {
-    # change Paris to your default location
     curl -H "Accept-Language: fr" wttr.in/"${1:-Montpellier}?n2"
 }
 
@@ -198,3 +196,10 @@ pulseaudio_restart() {
   pulseaudio --kill
   pulseaudio --start
 }
+
+swap_usage() {
+    for file in /proc/*/status ; do 
+      awk '/VmSwap|Name/{printf $2 " " $3}END{ print "" }' $file; 
+  done | sort -k 2 -n -r | head -n 15
+}
+

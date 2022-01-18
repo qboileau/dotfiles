@@ -9,6 +9,7 @@ gen
 home/.bashrc.d/work.bashrc
 home/.sbt/*/plugins/project
 home/.sbt/*/plugins/target
+home/.sbt/*/templates
 home/.sbt/*/server
 home/.sbt/*/staging
 home/.sbt/*/zinc

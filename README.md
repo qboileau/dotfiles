@@ -17,7 +17,7 @@ systemctl --user start ssh-agent.service
 
 #### I3Blocks / i3status-rust
 `pacman -S i3blocks`
-`yaourt -S i3status-rust`
+`yay -S i3status-rust`
 
 #### Docker 
 ```
@@ -32,18 +32,26 @@ gpasswd -a $USER docker
 - `pacman -S veracrypt`
 
 #### Dropbox
-- `yaourt dropbox`
+- `yay dropbox`
 
 #### Git  
 - `pacman -S git diff-so-fancy`
-- `yaourt -S git-standup-git` //git standup
-- `yaourt -S git-interactive-rebase-tool`
+- `yay -S git-standup-git` //git standup
+- `yay -S git-interactive-rebase-tool`
 
 #### Glances
 - `pacman -S glances`
 
 ### Others
-- `pacman -S feh galculator bash-completion noto-fonts-emoji bat exa ripgrep xorg-xbacklight dnsutils`
-- `yaourt ttf-emojione-color` //fonts 
-- `yaourt nerd-fonts-complete` //fonts 
-- `yaourt -S siji-git` //glyphs fonts
+- `pacman -S feh galculator bash-completion noto-fonts-emoji bat exa ripgrep xorg-xbacklight dnsutils xss-lock s-tui`
+- `yay ttf-emojione-color` //fonts 
+- `yay nerd-fonts-complete` //fonts 
+- `yay -S siji-git` //glyphs fonts
+- `yay -S sd` // sed replacement
+
+# Gaming
+- `pacman -S gamemode` // Gamemode optimizations
+- `yay -S goverlay` // Vulkan/OpenGL overlays.
+- `pacman -S piper` // gaming mouse configuration GUI
+- `yay -S noisetorch` // noise reductor
+- `pacman -S discord` // Discord
