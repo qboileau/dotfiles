@@ -6,10 +6,11 @@ if [ $? -gt 0 ]; then
 	echo "Run this script with sudo"
 	exit 1
 fi
-if [ $? -eq ${SUDO_UID} ]; then
-	echo "Run this script with sudo"
-	exit 1
-fi
+# if [ $? = ${SUDO_UID} ]; then
+# 	echo "Run this script with sudo"
+# 	exit 1
+# fi
+
 
 source_dir="/home/${SUDO_USER}/projects/perso"
 home_dir="/home/${SUDO_USER}"
@@ -19,17 +20,17 @@ home_dir="/home/${SUDO_USER}"
 # git clone https://github.com/qboileau/dotfiles.git
 # cd dotfile 
 cd ~
-git clone https://github.com/qboileau/dotfiles.git
+git clone -b auto-install https://github.com/qboileau/dotfiles.git
 cd dotfiles 
 
 echo "Update packages first"
-pacman -Syu
+pacman -Syyu --noconfirm
 
-"Install packages"
-pacman -S --needed - < sed -e '/^\s*#.*$/d' -e '/^\s*$/d' packages.list
+echo "Install packages"
+pacman -S --noconfirm --needed $(sed -e '/^\s*#.*$/d' -e '/^\s*$/d' packages.list)
 
-"Install AUR packages"
-yay -S --needed - < sed -e '/^\s*#.*$/d' -e '/^\s*$/d' packages_aur.list
+echo "Install AUR packages"
+yay -S --needed $(sed -e '/^\s*#.*$/d' -e '/^\s*$/d' packages_aur.list)
 
 echo "Install all dotfiles in $SUDO_USER home"
 install -dbv -o $SUDO_USER -g $SUDO_USER ./home $home_dir

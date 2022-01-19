@@ -1,0 +1,22 @@
+FROM archlinux
+
+# install minimal deps
+RUN pacman -Syyu --noconfirm  && \
+    pacman -S --noconfirm --needed base-devel sudo git go
+
+# create user
+RUN useradd -m -U -s /bin/bash testuser -p testuser && \
+    useradd builduser -m && \
+    passwd -d builduser && \
+    printf 'testuser ALL=(ALL) ALL\nbuilduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers
+
+# install yay
+RUN sudo -u builduser bash -c 'cd ~ && git clone https://aur.archlinux.org/yay.git yay && cd yay  && makepkg -s --noconfirm'
+
+WORKDIR /home/testuser
+
+COPY ./install.sh /home/testuser/install.sh
+
+RUN /home/testuser/install.sh
+
+ENTRYPOINT [ /bin/bash ]
