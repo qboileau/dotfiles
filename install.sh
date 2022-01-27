@@ -27,8 +27,11 @@ echo "Update packages first"
 pacman -Syyu --noconfirm
 
 echo "Install packages"
+sed -e '/^\s*#.*$/d' -e '/^\s*$/d' packages.list > /tmp/clean_packages.list
+pacman -S --needed - < /tmp/clean_packages.list
+
 # pacman -S --noconfirm --needed $(sed -e '/^\s*#.*$/d' -e '/^\s*$/d' packages.list)
-pacman -S --noconfirm --needed - < packages.list
+#pacman -S --noconfirm --needed - < packages.list
 
 echo "Install rust stable toolchain"
 rustup default stable
@@ -36,7 +39,8 @@ rustup install stable
 rustup show
 
 echo "Install AUR packages"
-yay -S --needed $(sed -e '/^\s*#.*$/d' -e '/^\s*$/d' packages_aur.list)
+sed -e '/^\s*#.*$/d' -e '/^\s*$/d' packages_aur.list > /tmp/packages_aur.list
+yay -S --needed < /tmp/packages_aur.list
 
 echo "Install all dotfiles in $SUDO_USER home"
 install -dbv -o $SUDO_USER -g $SUDO_USER ./home $home_dir

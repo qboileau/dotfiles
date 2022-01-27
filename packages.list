@@ -62,3 +62,4 @@ virtualbox-guest-iso
 vagrant
 kubectl
 helm
+k9s
