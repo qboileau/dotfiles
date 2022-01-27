@@ -27,7 +27,13 @@ echo "Update packages first"
 pacman -Syyu --noconfirm
 
 echo "Install packages"
-pacman -S --noconfirm --needed $(sed -e '/^\s*#.*$/d' -e '/^\s*$/d' packages.list)
+# pacman -S --noconfirm --needed $(sed -e '/^\s*#.*$/d' -e '/^\s*$/d' packages.list)
+pacman -S --noconfirm --needed - < packages.list
+
+echo "Install rust stable toolchain"
+rustup default stable
+rustup install stable
+rustup show
 
 echo "Install AUR packages"
 yay -S --needed $(sed -e '/^\s*#.*$/d' -e '/^\s*$/d' packages_aur.list)

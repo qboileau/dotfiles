@@ -1,7 +1,13 @@
 arandr
 alacritty
+bash-completion
+zsh
+zsh-completions
+zsh-autosuggestions
+oh-my-zsh
 git
 diff-so-fancy
+rustup
 glances
 i3blocks
 i3status-rust
@@ -15,7 +21,6 @@ dunst
 scrot
 galculator
 nitrogen
-bash-completion
 noto-fonts-emoji
 bat
 exa
@@ -29,6 +34,7 @@ tealdeer
 xorg-xbacklight
 xss-lock
 xed
+mousepad
 pcmanfm
 vlc
 mpv
@@ -40,6 +46,8 @@ pavucontrol
 firefox
 filezilla
 jdk-openjdk
+maven
+sbt
 helm
 vim
 nano
@@ -48,3 +56,9 @@ code
 docker
 docker-compose
 docker-scan
+virtualbox
+virtualbox-host-dkms
+virtualbox-guest-iso
+vagrant
+kubectl
+helm

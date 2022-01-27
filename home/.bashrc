@@ -31,7 +31,6 @@ export HISTFILESIZE=${HISTSIZE}
 export HISTCONTROL=ignoreboth
 export JAVA_FONTS=/usr/share/fonts/TTF
 export EDITOR=/bin/nano
-export BROWSER=google-chrome-stable
 
 export JAVA_HOME=/usr/lib/jvm/default
 export MAVEN_OPTS="-Xmx1g -XX:MaxPermSize=512m"
