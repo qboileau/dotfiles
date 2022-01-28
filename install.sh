@@ -10,7 +10,10 @@ fi
 # 	echo "Run this script with sudo"
 # 	exit 1
 # fi
+branch=${DOTFILES_BRANCH:-auto-install}
 
+# get arch ID, ex: arch or manjaro
+dist="$(grep "^ID=" /etc/os-release | awk '{split($0,a,"="); print a[2]}')"
 
 source_dir="/home/${SUDO_USER}/projects/perso"
 home_dir="/home/${SUDO_USER}"
@@ -27,8 +30,10 @@ echo "Update packages first"
 pacman -Syyu --noconfirm
 
 echo "Install packages"
-sed -e '/^\s*#.*$/d' -e '/^\s*$/d' packages.list > /tmp/clean_packages.list
-pacman -S --needed - < /tmp/clean_packages.list
+sed -e '/^\s*#.*$/d' -e '/^\s*$/d' ./packages/"$dist"_packages.list > /tmp/clean_packages.list
+packages="$(tr '\r\n' ' ' < /tmp/clean_packages.list)"
+echo -e "Package to install : \n$packages"
+pacman -S --noconfirm --needed $packages
 
 # pacman -S --noconfirm --needed $(sed -e '/^\s*#.*$/d' -e '/^\s*$/d' packages.list)
 #pacman -S --noconfirm --needed - < packages.list
@@ -39,8 +44,10 @@ rustup install stable
 rustup show
 
 echo "Install AUR packages"
-sed -e '/^\s*#.*$/d' -e '/^\s*$/d' packages_aur.list > /tmp/packages_aur.list
-yay -S --needed < /tmp/packages_aur.list
+sed -e '/^\s*#.*$/d' -e '/^\s*$/d' ./packages/"$dist"_packages_aur.list > /tmp/clean_packages_aur.list
+aur_packages="$(tr '\r\n' ' ' < /tmp/clean_packages_aur.list)"
+echo -e "AUR package to install : \n$aur_packages"
+yay -S --noconfirm --noprovides --needed $aur_packages
 
 echo "Install all dotfiles in $SUDO_USER home"
 install -dbv -o $SUDO_USER -g $SUDO_USER ./home $home_dir
