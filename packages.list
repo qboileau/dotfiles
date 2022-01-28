@@ -4,7 +4,6 @@ bash-completion
 zsh
 zsh-completions
 zsh-autosuggestions
-oh-my-zsh
 git
 diff-so-fancy
 rustup
