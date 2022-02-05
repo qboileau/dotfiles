@@ -1,4 +1,0 @@
-#!/bin/bash
-#executed in root by acpid
-#echo "open" >> /home/quentin/lid_state
-/home/quentin/.local/bin/lock -p
