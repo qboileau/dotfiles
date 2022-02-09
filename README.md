@@ -1,4 +1,13 @@
-## Install
+# Dotfiles
+Personal dotfiles and system configuration 
+
+## Auto install 
+Need curl/git/yay installed
+```sh
+curl -s -L https://github.com/qboileau/dotfiles/blob/auto-install/install.sh | bash
+```
+
+## Manual Install
 
 ```
 #install home files
@@ -11,6 +20,12 @@ systemctl --user start ssh-agent.service
 ```
 
 ## Dependencies and utilities 
+
+# core/extra/community packages
+See `./packages/arch_packages.list` for arch distrib and `./package/manjaro_packages.list` for manjaro
+
+# AUR packages (need yay or paru)
+See `./packages/arch_packages_aur.list` for arch distrib and `./package/manjaro_packages_aur.list` for manjaro
 
 #### Rofi
 `pacman -S rofi rofi-scripts`
