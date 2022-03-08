@@ -4,7 +4,7 @@ Personal dotfiles and system configuration
 ## Auto install 
 Need curl/git/yay installed
 ```sh
-curl -s -L https://github.com/qboileau/dotfiles/blob/auto-install/install.sh | bash
+curl -s -L https://raw.githubusercontent.com/qboileau/dotfiles/auto-install/install.sh | bash
 ```
 
 ## Manual Install
