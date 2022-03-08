@@ -15,7 +15,7 @@ echo "Update packages first"
 pacman -Syyu --noconfirm
 
 echo "Check dependencies"
-pacman -S git sudo go
+pacman --noconfirm -S git sudo go 
 yay --version
 if [[ $? -gt 0 ]]; then
 	echo "Install yay"
