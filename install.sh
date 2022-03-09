@@ -15,7 +15,7 @@ echo "Update packages first"
 pacman -Syyu --noconfirm
 
 echo "Check dependencies"
-pacman --noconfirm -S git sudo go 
+pacman --noconfirm -S git sudo go
 yay --version
 if [[ $? -gt 0 ]]; then
 	echo "Install yay"
@@ -35,9 +35,15 @@ else
 fi
 
 cd ${source_dir}
-git clone -b "${branch}" https://github.com/qboileau/dotfiles.git
-chown -R "${SUDO_USER}":"${SUDO_USER}" ./dotfiles/home
+if [[ -d "${source_dir}/dotfiles" ]]
+then
+	echo "Dotfile already cloned in ${source_dir}/dotfiles directory"
+else 
+	git clone -b "${branch}" https://github.com/qboileau/dotfiles.git
+	chown -R "${SUDO_USER}":"${SUDO_USER}" ./dotfiles/home
+fi
 cd dotfiles 
+
 
 echo "Install packages"
 sed -e '/^\s*#.*$/d' -e '/^\s*$/d' ./packages/"$dist"_packages.list > /tmp/clean_packages.list

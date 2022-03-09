@@ -1,6 +1,9 @@
 arandr
 alacritty
 bash-completion
+starship
+pigz
+pbzip2
 zsh
 zsh-completions
 zsh-autosuggestions
