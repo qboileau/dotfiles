@@ -13,9 +13,9 @@ truncate_to_repo = false
 commit_hash_length = 5
 
 [git_status]
-modified.enabled = true
-untracked.enabled = true
-staged.enabled = true
-deleted.enabled = true
-renamed.enabled = true
+#modified.enabled = true
+#untracked.enabled = true
+#staged.enabled = true
+#deleted.enabled = true
+#renamed.enabled = true
 

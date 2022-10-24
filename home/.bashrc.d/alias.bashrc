@@ -12,6 +12,7 @@ alias ip='ip --color'
 alias ipb='ip --color --brief'
 alias cat='bat'
 alias df='duf'
+alias git='LANG="en_US.UTF-8" git'
 
 alias ssh='TERM=xterm-color ssh'
 

@@ -18,7 +18,7 @@ exec border pixel none
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font xft:Noto Sans 10
+font xft:Noto Sans 10, NotoSansMono Nerd Font Regular 10
 
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
@@ -33,10 +33,10 @@ bindsym $mod+Ctrl+q --release exec --no-startup-id xkill
 # start program launcher
 #rbindsym $mod+d exec --no-startup-id dmenu_recency
 
-bindsym $alt+Tab exec "rofi -show window"
-bindsym $mod+d exec "rofi -show run"
-bindsym $mod+Shift+s exec --no-startup-id rofi -show ssh
-bindsym $mod+Shift+semicolon exec --no-startup-id rofi -show emoji -modi emoji
+bindsym $alt+Tab exec rofi -show window -config ~/.config/rofi/rofidmenu.rasi
+bindsym $mod+d exec rofi -modi drun -show drun -config ~/.config/rofi/rofidmenu.rasi
+bindsym $mod+Shift+s exec --no-startup-id rofi -show ssh -config ~/.config/rofi/rofidmenu.rasi
+bindsym $mod+Shift+semicolon exec --no-startup-id rofi -show emoji -modi emoji -config ~/.config/rofi/rofidmenu.rasi
 
 # launch categorized menu
 bindsym $mod+z exec --no-startup-id morc_menu
@@ -91,23 +91,22 @@ bindsym XF86Display mode "$monitor"
 #bindsym XF86Search #F10
 bindsym XF86LaunchA exec galculator #F11
 
-# Spotify controls
-bindsym $mod+XF86AudioLowerVolume exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
-bindsym $mod+XF86AudioRaiseVolume exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
-bindsym $mod+XF86AudioMute exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
-bindsym $mod+XF86AudioMicMute exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop
-
+# Spotify controls using volume control 
+#bindsym $mod+XF86AudioLowerVolume exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
+#bindsym $mod+XF86AudioRaiseVolume exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
+#bindsym $mod+XF86AudioMute exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+#bindsym $mod+XF86AudioMicMute exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop
 
 bindsym XF86AudioPrev  exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
 bindsym XF86AudioNext exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
-bindsym XF86AudioPlay exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Play
-bindsym XF86AudioPause exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Pause
+bindsym XF86AudioPlay exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+bindsym XF86AudioPause exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
 bindsym XF86AudioStop exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop
 
-bindsym $mod+F9  exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous ; dbus-send --print-reply  --dest=org.mpris.MediaPlayer2.spotifyd /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
-bindsym $mod+F10 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next ; dbus-send --print-reply  --dest=org.mpris.MediaPlayer2.spotifyd /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
-bindsym $mod+F11 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause ; dbus-send --print-reply  --dest=org.mpris.MediaPlayer2.spotifyd /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
-bindsym $mod+F12 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop ; dbus-send --print-reply  --dest=org.mpris.MediaPlayer2.spotifyd /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop"
+#bindsym $mod+F9  exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous ; dbus-send --print-reply  --dest=org.mpris.MediaPlayer2.spotifyd /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
+#bindsym $mod+F10 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next ; dbus-send --print-reply  --dest=org.mpris.MediaPlayer2.spotifyd /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
+#bindsym $mod+F11 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause ; dbus-send --print-reply  --dest=org.mpris.MediaPlayer2.spotifyd /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+#bindsym $mod+F12 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop ; dbus-send --print-reply  --dest=org.mpris.MediaPlayer2.spotifyd /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop"
 
 
 # Start Applications
@@ -128,11 +127,9 @@ bindsym $mod+Shift+t exec --no-startup-id picom --config ~/.config/picom.conf -b
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 
 #screenshot
-bindsym Print --release exec --no-startup-id i3-scrot -s
-bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
-bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
-
-#bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
+bindsym Print --release exec --no-startup-id flameshot gui #i3-scrot -s
+bindsym $mod+Print --release exec --no-startup-id flameshot launcher #i3-scrot -w
+#bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
 
 focus_follows_mouse yes
 mouse_warping none # mouse do not move to focus 
@@ -209,7 +206,7 @@ set $ws6 6:Misc
 set $ws7 7:Misc
 set $ws8 8:DEV
 set $ws9 9:PROD
-set $ws0 10:Spotify
+set $ws0 10:🎧
 
 #set $ws1 1: | 
 #set $ws2 2:
@@ -220,7 +217,7 @@ set $ws0 10:Spotify
 #set $ws7 7:Misc
 #set $ws8 8:DEV
 #set $ws9 9:PROD
-#set $ws0 10:Spotify 
+#set $ws0 10: Spotify 
 
 
 # switch to workspace
@@ -321,65 +318,45 @@ bindsym $mod+Shift+r restart
 #bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # Set shut down, restart and locking features
-bindsym $mod+Delete mode "$mode_system"
-set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
-mode "$mode_system" {
-    bindsym l exec --no-startup-id i3exit lock, mode "default"
-    bindsym s exec --no-startup-id i3exit suspend, mode "default"
-    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
-    bindsym e exec --no-startup-id i3exit logout, mode "default"
-    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
-    bindsym r exec --no-startup-id i3exit reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
-
-    # exit system mode: "Enter" or "Escape"
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-
-#openvpn mode
-bindsym $mod+o mode "$mode_openvpn"
-set $mode_openvpn (s)tart, (Shift+s)top
-mode "$mode_openvpn" {
-    bindsym s exec --no-startup-id systemctl start openvpn-client@production.aws, mode "default"
-    bindsym Shift+s exec --no-startup-id systemctl stop openvpn-client@production.aws, mode "default"
-
-    # exit system mode: "Enter" or "Escape"
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
+bindsym $mod+Delete exec ~/.i3/scripts/powermenu
+bindsym $mod+Shift+Delete exec ~/.i3/scripts/power-profiles
 
 # Lock screen
-bindsym $mod+l exec --no-startup-id blurlock
+#bindsym $mod+l exec --no-startup-id blurlock
+bindsym $mod+l exec --no-startup-id ~/.i3/scripts/lock-blur.sh
 
 #Toggle trackpad
-bindsym $mod+p exec ~/.local/bin/trackpad_toogle.sh
+#bindsym $mod+p exec ~/.local/bin/trackpad_toogle.sh
 
 #Random Wallpaper
-bindsym $mod+n exec ~/.local/bin/wallpaper rand
+bindsym $mod+n exec ~/.i3/scripts/wallpaper rand
 
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+#exec --no-startup-id /usr/lib/fingerprint-gui/fingerprint-polkit-agent
 exec --no-startup-id nitrogen --restore; sleep 1; picom --config ~/.config/picom.conf -b
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
-exec --no-startup-id clipit
+#exec --no-startup-id clipit
 exec --no-startup-id blueman-applet
 #exec --no-startup-id start_conky_maia
 #exec --no-startup-id start_conky_green
-exec --no-startup-id xset s 300; xss-lock -- blurlock
+exec --no-startup-id xset s 300; xss-lock -- ~/.i3/scripts/lock-blur.sh #blurlock
 exec_always --no-startup-id fix_xcursor
 exec --no-startup-id dropbox start
-#exec --no-startup-id spotify
 #exec --no-startup-id sbxkb
 exec --no-startup-id setxkbmap -model pc105 -layout us -variant alt-intl
 exec --no-startup-id synology-drive
+exec --no-startup-id touchegg
 
 # Move the current workspace to the next output
 # (effectively toggles when you only have two outputs)
 bindsym $mod+x move workspace to output right
 bindsym $mod+Shift+x move workspace to output up
+
+#monitor switcher
+bindsym $mod+F6 exec python  ~/.i3/scripts/monitor-switcher.py
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
@@ -398,7 +375,7 @@ bar {
 
 ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
 #	tray_output primary
-#	tray_output eDP1
+   tray_output eDP1
 
 	bindsym button4 nop
 	bindsym button5 nop
@@ -483,60 +460,3 @@ mode "$mode_gaps_outer" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-
-
-bindsym $mod+F6 mode $monitor_mode
-set $eDP eDP [a]lone, [o]ff, [p]rimary, Left[←] of eDP, Right[→] of eDP
-mode "$eDP" {
-   bindsym a exec "xrandr --output eDP --primary --auto  --output HDMI-A-0 --off --output DisplayPort-1 --off", mode "default"
-   bindsym o exec "xrandr --output eDP --off", mode "default"
-   bindsym p exec "xrandr --output eDP --primary", mode "default"
-   bindsym Left exec "xrandr --output eDP --auto --left-of eDP", mode "default"
-   bindsym Right exec "xrandr --output eDP --auto --right-of eDP", mode "default"
-   bindsym Return mode "default"
-   bindsym Escape mode "default"
-}
-
-set $HDMI_A_0 HDMI-A-0 [a]lone, [o]ff, [p]rimary, [u]p, Left[←] of eDP, Right[→] of eDP
-mode "$HDMI_A_0" {
-   bindsym a exec "xrandr --output HDMI-A-0 --primary --auto  --output eDP --off", mode "default"
-   bindsym o exec "xrandr --output HDMI-A-0 --off", mode "default"
-   bindsym p exec "xrandr --output HDMI-A-0 --primary", mode "default"
-   bindsym Up exec "xrandr --output HDMI-A-0 --auto --above eDP", mode "default"
-   bindsym Left exec "xrandr --output HDMI-A-0 --auto --left-of eDP", mode "default"
-   bindsym Right exec "xrandr --output HDMI-A-0 --auto --right-of eDP", mode "default"
-   bindsym Return mode "default"
-   bindsym Escape mode "default"
-}
-
-set $DisplayPort_1 DisplayPort-1 [a]lone, [u]p, [p]rimary, Left[←] of eDP, Right[→] of eDP
-mode "$DisplayPort_1" {
-   bindsym a exec "xrandr --output DisplayPort-1 --primary --auto  --output HDMI-A-0 --off --output eDP --off", mode "default"
-   bindsym p exec "xrandr --output DisplayPort-1 --primary", mode "default"
-   bindsym Up exec "xrandr --output DisplayPort-1 --auto --above eDP", mode "default"
-   bindsym Left exec "xrandr --output DisplayPort-1 --auto --left-of eDP", mode "default"
-   bindsym Right exec "xrandr --output DisplayPort-1 --auto --right-of eDP", mode "default"
-   bindsym Return mode "default"
-   bindsym Escape mode "default"
-}
-
-set $DisplayPort_0 DisplayPort-0 [a]lone, [p]rimary, Left[←] of eDP, Right[→] of eDP
-mode "$DisplayPort_0" {
-   bindsym a exec "xrandr --output DisplayPort-0 --primary --auto  --output HDMI-A-0 --off --output eDP --off", mode "default"
-   bindsym p exec "xrandr --output DisplayPort-0 --primary", mode "default"
-   bindsym Left exec "xrandr --output DisplayPort-0 --auto --left-of eDP", mode "default"
-   bindsym Right exec "xrandr --output DisplayPort-0 --auto --right-of eDP", mode "default"
-   bindsym Return mode "default"
-   bindsym Escape mode "default"
-}
-
-set $monitor_mode eDP(1) HDMI-A-0(2) DisplayPort-1(3) DisplayPort-0(4)
-mode "$monitor_mode" {
-    bindsym 1 mode "$eDP"
-    bindsym 2 mode "$HDMI_A_0"
-    bindsym 3 mode "$DisplayPort_1"
-    bindsym 4 mode "$DisplayPort_0"
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-
