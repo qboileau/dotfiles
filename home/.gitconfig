@@ -1,7 +1,16 @@
 [user]
-	name = qboileau
+ 	name = qboileau
   username = Quentin Boileau
 	
+[includeIf "gitdir:~/projects/perso/"]
+  	path = .gitconfig-personal
+	
+[includeIf "gitdir:~/projects/test/"]
+  	path = .gitconfig-personal
+
+[includeIf "gitdir:~/projects/conduktor/"]
+  	path = .gitconfig-conduktor
+
 [color]
   status = always
   diff = always
@@ -45,6 +54,5 @@
 [credential]
   	helper = cache --timeout=3600
 
-[include]
-	path = .git_credentials
-
+[program]
+  pgp = /usr/bin/gpg

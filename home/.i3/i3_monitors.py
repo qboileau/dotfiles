@@ -9,15 +9,16 @@ import pprint
 
 
 class Output:
-    def __init__(self, id, name, isPrimary, isConnected, modes):
+    def __init__(self, id, name, isPrimary, isConnected, isActive, modes):
         self.id = id
         self.name = name
         self.isPrimary = isPrimary
         self.isConnected = isConnected
+        self.isActive = isActive
         self.modes = modes
 
     def to_string(self):
-        string = f"{self.name} ({self.id}) primary:{self.isPrimary} connected:{self.isConnected}\n"
+        string = f"{self.name} ({self.id}) primary:{self.isPrimary} connected:{self.isConnected} active:{self.isActive}\n"
         for mode in self.modes:
             string += "     " + mode.to_string() + "\n"
         return string
@@ -156,13 +157,15 @@ def get_outputs(window, d):
     for output in resources['outputs']:
         id = int("%d" % (output, ))
         output_info = d.xrandr_get_output_info(output, resources['config_timestamp'])
+        print(output_info)
         name = output_info.name
         is_primary = True if (primary == id) else False
         is_connected = True if (output_info.connection == 0) else False
+        is_active = False if (output_info.crtc == 0) else False
         num_preferred = output_info.num_preferred
         output_modes = map_modes(output_info.modes, modes_list, num_preferred)
 
-        outputs.append(Output(id, name, is_primary, is_connected, output_modes))
+        outputs.append(Output(id, name, is_primary, is_connected, is_active, output_modes))
 
     return list(reversed(sorted(outputs, key=lambda o: (o.isPrimary, o.name))))
 
@@ -172,12 +175,12 @@ s = d.screen()
 window = s.root.create_window(0, 0, 1, 1, 1, s.root_depth)
 
 outputs = get_outputs(window, d)
-#for output in outputs: 
-#    print(output.to_string())
+for output in outputs: 
+    print(output.to_string())
 
 #generate and print config
-config = generate_monitor_config(outputs)
-print(config)
+#config = generate_monitor_config(outputs)
+#print(config)
 
 #
 #

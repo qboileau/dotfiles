@@ -43,7 +43,7 @@ export PATH="$HOME/bin/:$PATH"
 #Android build tools
 export PATH="~/projects/perso/Andoid_build/tools/plateform-tools:$PATH"
 
-export KUBECONFIG="/home/qboileau/.kube/config-th3:/home/qboileau/.kube/config-minikube"
+export KUBECONFIG="/home/qboileau/.kube/config"
 
 # sources bash extensions
 for file in ~/.bashrc.d/*.bashrc; do
@@ -51,12 +51,13 @@ for file in ~/.bashrc.d/*.bashrc; do
  unset file
 done
 
-# added by travis gem
-[ -f /home/qboileau/.travis/travis.sh ] && source /home/qboileau/.travis/travis.sh
-
 # source nvm if exist
 [ -f /usr/share/nvm/init-nvm.sh ] && source /usr/share/nvm/init-nvm.sh
 
 # super prompt
 eval "$(starship init bash)"
 
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

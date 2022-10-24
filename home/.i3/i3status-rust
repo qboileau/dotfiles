@@ -1,11 +1,13 @@
-icons = "awesome"
+[icons]
+name = "awesome5"
 
 [theme]
-name = "solarized-dark"
+name = "modern"
 
-[theme.overrides]
-idle_bg = "#222222"
-
+# set I3RS_GITHUB_TOKEN env with token with notification scope 
+#[[block]]
+#block = "github"
+#format = "{total}|{author}|{comment}|{mention}|{review_requested}"
 
 [[block]]
 block = "music"
@@ -32,18 +34,22 @@ display_type = "memory"
 format_mem = "{mem_total_used;G} {mem_used_percents}"
 format_swap = "{swap_used;G} {swap_used_percents}"
 
-[[block]]
-block = "toggle"
-text = "VPN"
-command_state = "systemctl status openvpn-client@pfsense-spesys.service | grep running"
-command_on = "systemctl start openvpn-client@pfsense-spesys.service"
-command_off = "systemctl stop openvpn-client@pfsense-spesys.service"
-interval = 5
+#[[block]]
+#block = "toggle"
+#text = "VPN"
+#command_state = "systemctl status openvpn-client@pfsense-spesys.service | grep running"
+#command_on = "systemctl start openvpn-client@pfsense-spesys.service"
+#command_off = "systemctl stop openvpn-client@pfsense-spesys.service"
+#interval = 5
 
 [[block]]
 block = "networkmanager"
 primary_only = true
 on_click = "nm-connection-editor"
+
+#[[block]]
+#block = "external_ip"
+#format = "{ip} {country_code}"
 
 [[block]]
 block = "cpu"
